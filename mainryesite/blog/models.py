@@ -14,8 +14,6 @@ class PublishedManager(models.Manager):
 
 class Post(models.Model):
 
-    tags = TaggableManager()
-
     
     class Status(models.TextChoices):
         DRAFT = 'DF', 'Draft'
@@ -38,12 +36,14 @@ class Post(models.Model):
     objects = models.Manager()
     published = PublishedManager()
 
+    tags = TaggableManager()
 
     class Meta:
         ordering = ['-publish']
         indexes = [
             models.Index(fields=['-publish']),
         ]
+
 
     def __str__(self):
         return self.title
