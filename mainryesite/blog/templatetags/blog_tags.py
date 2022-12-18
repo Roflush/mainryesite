@@ -1,5 +1,8 @@
 from django import template
 from ..models import Post
+from django.db.models import Count
+from django.utils.safestring import mark_safe
+import markdown
 
 # Required by django template library.
 # see more here: https://docs.djangoproject.com/en/4.1/howto/custom-template-tags/
@@ -16,3 +19,15 @@ def show_latest_posts(count=5):
         Can be used anywhere by calling the latest_posts html file."""
     latest_posts = Post.published.order_by('-publish')[:count]
     return {'latest_posts': latest_posts}
+
+@register.simple_tag
+def most_commented_posts(count=5):
+    """ Gets the 5 most commented on posts. """
+    return Post.published.annotate(
+                total_comments=Count('comments')
+    ).order_by('-total_comments')[:count]
+
+@register.filter(name='markdown')
+def markdown_func(text):
+    """ Markdown formatter filter """
+    return mark_safe(markdown.markdown(text))
