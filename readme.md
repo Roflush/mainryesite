@@ -21,7 +21,7 @@ THE PVT IS SHOWEN IN THE REPO, SO YOU NEED TO CREATE A NEW ONE IF YOU PLAN TO DE
 ## Todo
 
 - [ ] Change database to PostageSQL
-- [ ] Add markdown support 
+- [x] Add markdown support (Kinda in beta, it's added but not fully tested)
 - [x] Add tags for feature post, and latest post
 - [x] Add comments
 - [ ] Add testing 
