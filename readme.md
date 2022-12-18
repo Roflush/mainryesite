@@ -13,4 +13,11 @@ THE PVT IS SHOWEN IN THE REPO, SO YOU NEED TO CREATE A NEW ONE IF YOU PLAN TO DE
 - Built on Django 4.1, and python 3.10.
 - Fast, and uses SQlite for testing but moving to PostageSQL soon.
 
-## Table of Contents
+## Todo
+
+- [ ] Change database to PostageSQL
+- [ ] Add markdown support 
+- [x] Add tags for feature post, and latest post
+- [x] Add comments
+- [ ] Add testing 
+- [ ] Make a Heroku build
