@@ -1,6 +1,8 @@
 from django import template
 from ..models import Post
 from django.db.models import Count
+from django.utils.safestring import mark_safe
+import markdown
 
 # Required by django template library.
 # see more here: https://docs.djangoproject.com/en/4.1/howto/custom-template-tags/
@@ -24,3 +26,8 @@ def most_commented_posts(count=5):
     return Post.published.annotate(
                 total_comments=Count('comments')
     ).order_by('-total_comments')[:count]
+
+@register.filter(name='markdown')
+def markdown_func(text):
+    """ Markdown formatter filter """
+    return mark_safe(markdown.markdown(text))
