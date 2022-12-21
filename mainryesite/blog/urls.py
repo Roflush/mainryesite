@@ -31,4 +31,7 @@ urlpatterns = [
 
       # For RSS
     path('feed/', LatestPostFeed(), name='post_feed'),  
+
+      #For Search
+    path('search/', views.post_search, name='post_search'),  
 ]
